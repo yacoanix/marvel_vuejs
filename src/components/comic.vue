@@ -1,5 +1,10 @@
 <template>
   <div >
+    <router-link
+      v-if="$routerHistory.hasPrevious()"
+      :to="{ path: $routerHistory.previous().path }">
+      GO BACK
+    </router-link>
     <div v-for="comic in title">
       <h1>{{comic.title}}</h1>
       <img :src="comic.thumbnail.path+`.`+comic.thumbnail.extension" alt="comic" height="500px">

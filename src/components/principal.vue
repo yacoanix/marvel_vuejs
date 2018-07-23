@@ -5,6 +5,11 @@
     <br>
     <br>
     <muestra :object="object" v-for="object in comic"></muestra>
+
+    <!-- <ul>
+      <li v-for="todo in todos"> <a href="#" :on="pages(todo)"> {{todo}}</a> </li>
+    </ul> -->
+    {{todos}}
   </div>
 </template>
 
@@ -24,7 +29,9 @@ export default {
       ts:1,
       nombre:"",
       comic:[],
-      todos:null
+      todos:null,
+      page:1,
+      idChar:null
     }
   },
   methods: {
@@ -35,11 +42,12 @@ export default {
           this.idList(lista);
       });
     },
-    comics(id){
-      axios.get("https://gateway.marvel.com/v1/public/characters/"+id+"/comics?ts="+this.ts+"&apikey="+this.api_key+"&hash="+this.hash)
+    comics(){
+      axios.get("https://gateway.marvel.com/v1/public/characters/"+this.idChar+"/comics?limit=10&offset="+this.page+"&ts="+this.ts+"&apikey="+this.api_key+"&hash="+this.hash)
         .then( res => {
-          this.todos = res.data.data.total;
-        this.comic = res.data.data.results
+          let todos = Math.ceil(res.data.data.total/10);
+          this.todos=todos;
+          this.comic = res.data.data.results;
       });
     },
     idList(lista){
@@ -49,8 +57,18 @@ export default {
       for(let i=0;i<array.length;i++){
         id=array[i].id
       }
-      this.comics(id);
+      this.idChar=id;
+      this.comics();
+    },
+    pages(pagina){
+      this.page=pagina;
+      this.comics();
     }
   }
 }
 </script>
+<style>
+ul li{
+  display: inline;
+}
+</style>

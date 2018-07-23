@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import principal from '@/components/principal'
 import comic from '@/components/comic'
+import { routerHistory, writeHistory } from 'vue-router-back-button'
 
 Vue.use(Router)
+Vue.use(routerHistory)
 
-export default new Router({
+const router= new Router({
   routes: [
     {
       path: '/',
@@ -19,3 +21,6 @@ export default new Router({
     }
   ]
 })
+router.afterEach(writeHistory)
+export default router;
+
