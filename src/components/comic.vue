@@ -31,9 +31,11 @@ export default {
   name: 'comic',
   data () {
     return {
-      api_key: "3fa04a78e5aa0797e1b64f256ab0f8a2",
-      hash2:"86b465ae9811442221d71a1a9d6ca68b3e2b6632",
-      hash:"853b974943ccd94b1b4fcda13d8d35ee",
+      api_key2: "3fa04a78e5aa0797e1b64f256ab0f8a2",
+      api_priv:"86b465ae9811442221d71a1a9d6ca68b3e2b6632",
+      hash2:"853b974943ccd94b1b4fcda13d8d35ee",
+      api_key: "304755348ea953537f1dbc384450cb15",
+      hash:"fbe531ca62d9af85dd32908fe74ad2cb",
       ts:1,
       title:[]
     }
