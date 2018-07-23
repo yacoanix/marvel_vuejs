@@ -4,21 +4,18 @@
     <button @click="busqId">Buscar</button>
     <br>
     <br>
-      <div v-for="object in comic">
-        {{object.title}}
-        <br>
-        <br>
-        <img :src="object.thumbnail.path+`.`+object.thumbnail.extension" alt="comic" height="150px">
-        <br>
-        <br>
-      </div>
+    <muestra :object="object" v-for="object in comic"></muestra>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import muestra from './muestra';
 export default {
   name: 'principal',
+  components: {
+    muestra
+  },
   data () {
     return {
       api_key: "3fa04a78e5aa0797e1b64f256ab0f8a2",
