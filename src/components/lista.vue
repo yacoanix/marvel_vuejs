@@ -1,9 +1,5 @@
 <template>
-<div>
-    <ul>
-      <li> <a href="#" @click="$emit('selected',todo)> {{todo}}</a> </li>
-    </ul>
-</div>
+      <li> / <a href="#" @click="$emit('selected',todo)"> {{todo}}</a> </li>
 </template>
 <script>
 import axios from 'axios';
@@ -12,3 +8,8 @@ export default {
   props:['todo']
 }
 </script>>
+<style>
+ul li{
+  display: inline;
+}
+</style>

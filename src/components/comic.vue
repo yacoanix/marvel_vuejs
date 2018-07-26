@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <router-link
       v-if="$routerHistory.hasPrevious()"
       :to="{ path: $routerHistory.previous().path }">

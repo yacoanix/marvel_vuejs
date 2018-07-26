@@ -1,14 +1,29 @@
 <template>
   <div class="hello">
-    <input type="text" v-model="nombre" @keyup.enter="busqId">
-    <button @click="busqId">Buscar</button>
+    <nav>
+      <div class="wrapper">
+        <div class="busq">
+          <span>
+          <input type="search" v-model="nombre" @keyup.enter="busqId" placeholder="Buscar">
+          </span>
+          <span class="imagen">
+          <img src="../../build/Marvel.png" alt="marvel" height="40px">
+          </span>
+        </div>
+      <!-- <button @click="busqId">Buscar</button> -->
+      </div>
+    </nav>  
     <br>
     <br>
+    <div class="wrapper">
+    <div class="comics">
     <muestra :object="object" v-for="object in comic"></muestra>
+    </div>
+    <br>
     <ul>
       <lista :todo="todo" v-for="todo in todos" v-on:selected="pages"></lista>
     </ul>
-    
+    </div>
   </div>
 </template>
 
@@ -64,14 +79,56 @@ export default {
       this.comics();
     },
     pages(pagina){
-      this.page=pagina;
+      this.page=(pagina-1) *10;
       this.comics();
     }
   }
 }
 </script>
+
 <style>
-ul li{
-  display: inline;
+  
+.comics {
+    height: 450px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows:  repeat(2, 1fr);
 }
+
+.wrapper {
+    margin: 0 auto;
+    width: 1170px;
+}
+
+nav {
+  background-color: #EC1D24;
+  margin: 0;
+  height: 100px;
+}
+
+input[type="search"]{
+  margin-top: 30px;
+    width: 45px; /*ancho por defecto*/
+    background: #ededed url('../../build/search.png') no-repeat 9px center; /*icono lupa*/
+    padding: 9px 10px 9px 32px;
+    border-radius: 15em;
+    -webkit-transition: all .5s; /* transición de .5seg a todos los elementos para chrome*/
+    -moz-transition: all .5s; /* transición de .5seg a todos los elementos para mozilla*/
+    -o-transition: all .5s; /* transición de .5seg a todos los elementos para ophera*/
+    transition: all .5s; /* transición de .5seg a todos los elementos*/
+    outline: none; /* ocultar el fucos automático de los input */
+}
+input[type="search"]:focus{
+  margin-top: 30px;
+    width: 130px; /*tamaño del boton buscar al hacer click*/
+    padding-left: 32px; /*espacio entre el icono lupa y el placeholder*/
+    color: #000;
+    background-color: #FFF;
+}
+
+.imagen {
+  float: right;
+  margin-top: 30px
+}
+
 </style>
