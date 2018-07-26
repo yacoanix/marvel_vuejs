@@ -89,10 +89,11 @@ export default {
 <style>
   
 .comics {
-    height: 450px;
+    height: 600px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows:  repeat(2, 1fr);
+    grid-gap: 15px;
 }
 
 .wrapper {
